@@ -16,6 +16,13 @@ dasm - command line disassembler
 			./dasm 90 90 90 eb fe
 	depends on pydasm
 
+hc - hex <-> dec converter
+	input: dec or hex number
+	output: hex or dec number
+	ex: ./hc 0x90
+	ex: ./hc 1234
+	change SIGNED to False if you want unsigned conversions
+
 (C) Leon Szpilewski 2011, http://github.com/jsz
 Licensed under GPL3
 	
