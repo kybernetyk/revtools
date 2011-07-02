@@ -43,6 +43,8 @@ ord - byte -> hexvalue
                 -> 61 62 63 #note that whitespace is not converted to 0x20!
         ./ord "a b c"
                 -> 61 20 62 20 63 #note that whitespace is converted to 0x20 now
+        ./ord -C "a b c"
+                -> "\x61\x20\x62\x20\x63"
 
 ord chr chaining with xargs:
     ./ord lol |xargs ./chr
