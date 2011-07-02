@@ -7,7 +7,8 @@ import hex_str
 cmode = False
 
 if len(sys.argv) <= 1:
-	print "syntax: %s <bytes/s ...>" % (sys.argv[0])
+	print "syntax: %s [-C] <bytes/s ...>" % (sys.argv[0])
+	print "-C = C string output mode"
 	sys.exit(23)
 args = sys.argv[1:]
 if sys.argv[1] == '-C':
