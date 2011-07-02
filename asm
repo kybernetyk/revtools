@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # a little wrapper around nasm to make assembling
 # small snippets of x86 from stdin easier
-#
+# 
+# NASM must be installed and in $PATH
+# 
 # example:
 #  ./asm mov eax, 1
 #  ./asm "lbl: jmp lbl"   //produces eb fe
@@ -26,6 +28,6 @@ n = tf.name
 tf.write(s)
 tf.flush()
 
-print os.popen("nasm -fbin %s -o %s && hexdump -C %s && rm -f %s" % (n, n+".out", n+".out", n+".out")).read()
+print os.popen("nasm %s -o %s && hexdump -C %s && rm -f %s" % (n, n+".out", n+".out", n+".out")).read()
 
 tf.close()

@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+# a command line disassembler for short byte sequences
+#
+# depends on pydasm
+#
+# examle
+# ./dasm 90 90 90 90 eb fe
+# ./dasm "\x90\x90\x90\x90\xeb\xFE"
+# ./dasm 90909090ebfe
+#
+# (c) Leon Szpilewski, http://github.com/jsz
+# Licensed under GPL3
+
+import pydasm
+import sys
+import os
+import hex_str
+
+cmd = "".join(sys.argv[1:])
+cmd = cmd.replace("\\x","")
+
+try:
+	dta = hex_str.hex_to_str(cmd)
+except ValueError: #if we got already raw bytes don't transcode them
+	dta = cmd
+
+offset = 0
+while offset < len(dta):
+	i = pydasm.get_instruction(dta[offset:], pydasm.MODE_32)
+	s = pydasm.get_instruction_string(i, pydasm.FORMAT_INTEL, 0)
+	print "%.8x\t%s" % (offset, s)
+	if not i:
+		break
+	offset += i.length
+
