@@ -1,28 +1,30 @@
 Handy command line tools for x86 reverse engineering.
 
 asm - command line assembler
-	input: x86 assembly
-	output: opcodes
-	ex: ./asm nop
-			./asm xor eax, eax
-			./asm mov eax, 1
-	depends on NASM
+    input: x86 assembly
+    output: opcodes
+    ex: ./asm nop
+            ./asm xor eax, eax
+            ./asm mov eax, 1
+    depends on NASM
 
 dasm - command line disassembler
-	input: opcode stream
-	output: x86 assembly
-	ex: ./dasm 909090ebfe
-			./dasm "\x90\x90\x90\xeb\xfe"
-			./dasm 90 90 90 eb fe
-	depends on pydasm
+    input: opcode stream
+    output: x86 assembly
+    ex: ./dasm 909090ebfe
+        ./dasm "\x90\x90\x90\xeb\xfe"
+        ./dasm 90 90 90 eb fe
+    depends on pydasm
 
 hc - hex <-> dec converter
-	input: dec or hex number
-	output: hex or dec number
-	ex: ./hc 0x90
-	ex: ./hc 1234
-	change SIGNED to False if you want unsigned conversions
+    input: dec or hex number
+    output: hex or dec number
+    ex: ./hc 0x90
+        ./hc 1234
+        ./hc f00dfefeh
+        ./hc -2
+    change SIGNED to False if you want unsigned conversions
 
 (C) Leon Szpilewski 2011, http://github.com/jsz
 Licensed under GPL3
-	
+    
