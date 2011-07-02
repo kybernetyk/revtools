@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+# prints bytes for a given value
+# ex: ./chr 48 49 0x20 0x50 32 52
+import sys
+import hex_str
+
+newline = True
+
+if len(sys.argv) <= 1:
+	print "syntax: %s <bytes/s ...>" % (sys.argv[0])
+	sys.exit(23)
+args = sys.argv[1:]
+if sys.argv[1] == '-n':
+	newline = False
+	args = sys.argv[2:]
+
+s = "".join(args)
+print hex_str.str_to_hex(s)
+
+#sys.stdout.write("".join(out))
+if newline:
+	print
