@@ -4,8 +4,8 @@ asm - command line assembler
     input: x86 assembly
     output: opcodes
     ex: ./asm nop
-            ./asm xor eax, eax
-            ./asm mov eax, 1
+        ./asm xor eax, eax
+        ./asm mov eax, 1
     depends on NASM
 
 dasm - command line disassembler
@@ -30,6 +30,8 @@ chr - hexvalue -> byte
         output: byte value
         ex: ./chr 48 49 4a 4b
                 -> HIJK
+            ./chr 48494a4b
+                -> HIJK
 ord - byte -> hexvalue
     input: byte value
         output: hex value
@@ -37,10 +39,14 @@ ord - byte -> hexvalue
                 -> 90 78 79 7A
         ./ord lol
                 -> 6C 6F 6C
+        ./ord a b c  
+                -> 61 62 63 #note that whitespace is not converted to 0x20!
+        ./ord "a b c"
+                -> 61 20 62 20 63 #note that whitespace is converted to 0x20 now
 
 ord chr chaining with xargs:
     ./ord lol |xargs ./chr
-                -> lol
+            -> lol
 
 (C) Leon Szpilewski 2011, http://github.com/jsz
 Licensed under GPL3
