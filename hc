@@ -61,6 +61,15 @@ for s in cmd:
 	if s[len(s)-1] == 'h':
 		s = s[0:len(s)-1]
 		kind = "hex"
+	
+	#lol i feel so dirty - but i'm not a python pro 
+	if 'a' in s.lower() or\
+		'b' in s.lower() or\
+		'c' in s.lower() or\
+		'd' in s.lower() or\
+		'e' in s.lower() or\
+		'f' in s.lower():
+			kind = "hex"
 	t = s
 	if kind == "hex":
 		i = int(s, 16)
