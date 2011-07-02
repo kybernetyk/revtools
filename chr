@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+# prints bytes for a given value
+import sys
+
+newline = True
+
+if len(sys.argv) <= 1:
+	print "syntax: %s <number/s ...>" % (sys.argv[0])
+	sys.exit(23)
+args = sys.argv[1:]
+if sys.argv[1] == '-n':
+	newline = False
+	args = sys.argv[2:]
+out = []
+for s in args: 
+	if "0x" in s:
+		i = int(s[2:], 16)
+	elif s[-1] == 'h': 
+		i = int(s[:-1], 16)
+	else:
+		i = int(s)
+	out += chr(i) 
+
+sys.stdout.write("".join(out))
+if newline:
+	print
