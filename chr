@@ -1,26 +1,23 @@
 #!/usr/bin/env python
 # prints bytes for a given value
+# ex: ./chr 48 49 0x20 0x50 32 52
 import sys
+import hex_str
 
 newline = True
 
 if len(sys.argv) <= 1:
-	print "syntax: %s <number/s ...>" % (sys.argv[0])
+	print "syntax: %s <hex value/s ...>" % (sys.argv[0])
 	sys.exit(23)
 args = sys.argv[1:]
 if sys.argv[1] == '-n':
 	newline = False
 	args = sys.argv[2:]
-out = []
-for s in args: 
-	if "0x" in s:
-		i = int(s[2:], 16)
-	elif s[-1] == 'h': 
-		i = int(s[:-1], 16)
-	else:
-		i = int(s)
-	out += chr(i) 
+args = "".join(args)
+args = args.replace("\\x", "")
+args = args.replace("h", "")
 
+out = hex_str.hex_to_str(args)
 sys.stdout.write("".join(out))
 if newline:
 	print
