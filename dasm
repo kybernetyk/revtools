@@ -28,7 +28,11 @@ offset = 0
 while offset < len(dta):
 	i = pydasm.get_instruction(dta[offset:], pydasm.MODE_32)
 	s = pydasm.get_instruction_string(i, pydasm.FORMAT_INTEL, offset)
-	print "%.8x\t%s" % (offset, s)
+	print "%.8x " % (offset),
+	for n in range(0, i.length):
+		print "%.2x" %(ord(dta[offset+n])),
+	print " "*(15 - i.length*3),
+	print "%s" % (s)
 	if not i:
 		break
 	offset += i.length
