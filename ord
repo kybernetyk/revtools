@@ -15,8 +15,8 @@ if sys.argv[1] == '-n':
 	args = sys.argv[2:]
 
 s = "".join(args)
-print hex_str.str_to_hex(s)
+s = hex_str.str_to_hex(s)
 
-#sys.stdout.write("".join(out))
+sys.stdout.write("".join(s))
 if newline:
 	print
